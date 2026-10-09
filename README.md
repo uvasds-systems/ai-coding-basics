@@ -53,7 +53,7 @@ At any time you can check your token usage with the `/usage` command. **Be aware
   /setup                        100%
 ```
 
-> **What's a session?** 
+> **What's a session?** "Session" means two different things here. A CC *session* is one conversation, from launching `claude` until you `/exit` or `/clear`. It has its own context history, and the top "Session" block reports the cost, duration, and tokens for that conversation only. The "Current session" bar means something else: it measures your subscription's usage limit over a rolling window of about 5 hours. That window starts with your first message and resets at the time shown, no matter how many CC conversations you open or close in between.
 
 To get more precise stats on your recent usage, issue the `/stats` command:
 
