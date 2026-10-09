@@ -97,6 +97,47 @@ This is separate from CC's *memory* features (such as `CLAUDE.md`), which carry 
 
 > NOTE: It's tempting to always resume the previous session as you work on a project. While this works, the entire conversation history is sent to the model again with every message, so a long session costs more tokens on each turn. Prompt caching reduces this, but the cache expires after a few minutes, so the first message after resuming pays close to full price for the whole history. Very long contexts can also lower the quality of responses. Therefore, only resume a session when you are continuing the same line of thought or specific process. A fresh session in the same project is better for new work. Within a session, `/clear` starts over without exiting, and `/compact` replaces the history with a summary.
 
+## Try It Out
+
+A simple way to try out CC is to write your own application schema (definition of what it should do)
+and then ask CC to build the code for it. While this is NOT recommended for building realworld
+data science applications, it helps demonstrate the power of descriptive language to drive code
+generation.
+
+1. Create a new file named `SCHEMA.md` and describe an application.
+2. As an example, let's write some code that will generate Pi to 20 decimals, as accurately as possible.
+3. Do not use language-specific mentions of functions, classes, or packages (unless you need to), leaving your SCHEMA as code-agnostic as possible.
+4. A sample prompt:
+
+    Generate the code to perform the mathematical calculations necessary to print
+    out the value of Pi to twenty decimal places. This calculation should be AS 
+    ACCURATE AS POSSIBLE, using the relevant method, package, library, or approach
+    as you determine.
+    
+    As you generate the code, also generate a markdown file that (1) explains how to
+    use the code (i.e. how to run, compile, etc.); and (2) explains the calculation
+    method and how this is verifiable using standard tests.
+    
+    If you need to install software, packages, create a virtual environment, etc. you
+    will ask before doing anything, and get my consent.
+
+5. Generate the code and specify a language (Python, C++, Go, etc.)
+
+    ```
+    ▗ ▗   ▖ ▖  Claude Code v2.1.295
+               Opus 5.5 · Claude Enterprise
+     ▘▘   ▝▝   ~/Development/ai-coding-basics
+    
+    
+    ────────────────────────────────────────────────────────────────────────────────────────────────────
+    ❯ generate the application in @SCHEMA.md using the Go language
+    ────────────────────────────────────────────────────────────────────────────────────────────────────
+      ⏵⏵ auto mode on (shift+tab to cycle)   
+    ```
+
+Notice that within a prompt you can use the `@` character to scope your prompt to a specific
+file or folder.
+
 ## Skills
 
 ## Agents
