@@ -87,15 +87,15 @@ To get out of CC and reclaim a normal terminal command, simply enter `/exit`.
 
 ## Resume a Session
 
-CC tracks where you do work, and has an understanding of files and folders (and subfolders) of any
-project. This is known as *context*, so that CC can help satisfy varying requirements across varying
-projects. The memory of contexts, and previous work done within that context, is saved 
-automatically and can be resumed at any time.
+CC saves each session's transcript locally (under `~/.claude/projects/`), organized by the directory
+you launched `claude` from. Any session can be resumed later, restoring its full conversation history.
+This is separate from CC's *memory* features (such as `CLAUDE.md`), which carry across all sessions.
 
-To review previous sessions within the same context, use `claude --resume` and you will be presented
-with a list of choices to choose from. Use up/down arrow keys to select.
+- `claude --resume` (or `-r`) - presents a list of previous sessions for the current directory. Use the up/down arrow keys to select, then press Enter.
+- `claude --continue` (or `-c`) - skips the list and resumes the most recent session.
+- `/resume` - opens the same list from within a running session.
 
-> NOTE: Most users assume they should always resume the previous session continually as they work on a project. While this would work, this means the ever-growing context history has to be re-ingested by CC each time you open the project, which leads to much greater token consumption. Therefore, only resume a session when you are continuing to work on the same line of thought, or specific process. A fresh new session in the same project can help you do other/new work with the least impact on token usage.
+> NOTE: It's tempting to always resume the previous session as you work on a project. While this works, the entire conversation history is sent to the model again with every message, so a long session costs more tokens on each turn. Prompt caching reduces this, but the cache expires after a few minutes, so the first message after resuming pays close to full price for the whole history. Very long contexts can also lower the quality of responses. Therefore, only resume a session when you are continuing the same line of thought or specific process. A fresh session in the same project is better for new work. Within a session, `/clear` starts over without exiting, and `/compact` replaces the history with a summary.
 
 ## Skills
 
