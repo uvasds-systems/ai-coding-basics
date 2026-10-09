@@ -36,7 +36,7 @@ At any time you can check your token usage with the `/usage` command. **Be aware
   Usage:                 0 input, 0 output, 0 cache read, 0 cache write
   
   Current session
-  ████████                              18% used
+  ████████                                          18% used
   Resets 1:39pm (America/New_York)
 
   What's contributing to your limits usage?
@@ -80,6 +80,22 @@ To get more precise stats on your recent usage, issue the `/stats` command:
 
   Your input and output are ~19x the tokens in Brave New World
 ```
+
+## Exit a Session
+
+To get out of CC and reclaim a normal terminal command, simply enter `/exit`.
+
+## Resume a Session
+
+CC tracks where you do work, and has an understanding of files and folders (and subfolders) of any
+project. This is known as *context*, so that CC can help satisfy varying requirements across varying
+projects. The memory of contexts, and previous work done within that context, is saved 
+automatically and can be resumed at any time.
+
+To review previous sessions within the same context, use `claude --resume` and you will be presented
+with a list of choices to choose from. Use up/down arrow keys to select.
+
+> NOTE: Most users assume they should always resume the previous session continually as they work on a project. While this would work, this means the ever-growing context history has to be re-ingested by CC each time you open the project, which leads to much greater token consumption. Therefore, only resume a session when you are continuing to work on the same line of thought, or specific process. A fresh new session in the same project can help you do other/new work with the least impact on token usage.
 
 ## Skills
 
